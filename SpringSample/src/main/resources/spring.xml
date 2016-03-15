@@ -1,201 +1,218 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:context="http://www.springframework.org/schema/context"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
     http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context-3.0.xsd" default-init-method="myInit" default-destroy-method="myDestroy">
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+	default-init-method="myInit" default-destroy-method="myDestroy">
 
-<!-- Comment the non-required bean definitions. Uncomment only the bean definition whose test case is being executed.
-TestCaseName is present on top the bean definition for reference -->
+	<!-- Comment the non-required bean definitions. Uncomment only the bean 
+		definition whose test case is being executed. TestCaseName is present on 
+		top the bean definition for reference -->
 
-<!-- testAutowireByNameAnnotation -->
-<context:annotation-config/>
-<!-- testAutowireByNameAnnotation -->
-<context:component-scan base-package="com.home.spring.beans"></context:component-scan>
+	<!-- testAutowireByAnnotation -->
+	<!-- testAutowireByAnnotationWithQualifier -->
+	<!-- testGettingTextFromPropertyFile -->
+	<!-- testGettingVariableTextFromPropertyFileWithMessageSource -->
+	<context:annotation-config />
 
-<!--Setter Injection bean  -->
-<!--testSetterInjection  -->
-<bean id="dog" class="com.home.spring.beans.Dog" >
-<property name="name" value="Haiku"/>
-<property name="age" value="1"/>
-</bean>
+	<!-- testAutowireByAnnotation -->
+	<!-- testAutowireByAnnotationWithQualifier -->
+	<!-- testGettingTextFromPropertyFile -->
+	<!-- testGettingVariableTextFromPropertyFileWithMessageSource -->
+	<context:component-scan base-package="com.home.spring.beans"></context:component-scan>
 
-<!--Constructor Injection bean  -->
-<!--testConstructorInjection  -->
-<bean id="dogConstructor" class="com.home.spring.beans.Dog">
-<constructor-arg value="Haiku"/>
-<constructor-arg value="1"/>
-</bean>
+	<!--Setter Injection bean -->
+	<!--testSetterInjection -->
+	<bean id="dog" class="com.home.spring.beans.Dog">
+		<property name="name" value="Haiku" />
+		<property name="age" value="1" />
+	</bean>
 
-<!--Injection of Objects  -->
-<!-- testObjectInjection -->
-<!-- testCollectionBeanObjectInjection -->
-<!-- testautoWireByName -->
-<bean id="sweetFood" class="com.home.spring.beans.Food">
-<property name="taste" value="sweet"/>
-<property name="quality" value="GradeA"/>
-</bean>
-<!-- testObjectInjection -->
-<!-- testCollectionBeanObjectInjection -->
-<!-- testautoWireByName -->
-<bean id="spicyFood" class="com.home.spring.beans.Food">
-<property name="taste" value="spicy"/>
-<property name="quality" value="GradeC"/>
-</bean>
-<!-- testObjectInjection -->
-<bean id="injectFoodToDog" class="com.home.spring.beans.Dog">
-<property name="sweetFood" ref="sweetFood"/>
-<property name="spicyFood" ref="spicyFood"/>
-</bean>
+	<!--Constructor Injection bean -->
+	<!--testConstructorInjection -->
+	<bean id="dogConstructor" class="com.home.spring.beans.Dog">
+		<constructor-arg value="Haiku" />
+		<constructor-arg value="1" />
+	</bean>
 
-
-<!--Inner beans  -->
-<!-- testInnerBeanObjectInjection -->
-<bean id="innerBean" class="com.home.spring.beans.Dog">
-<property name="sweetFood">
-<bean class="com.home.spring.beans.Food">
-<property name="taste" value="InnerBean sweet"/>
-<property name="quality" value="InnerBean GradeA"/>
-</bean> 
-</property>
-<property name="spicyFood">
-<bean class="com.home.spring.beans.Food">
-<property name="taste" value="InnerBean Spicy taste"/>
-<property name="quality" value="InnerBean GradeC"/>
-</bean>
-</property>
-</bean>
-
-<!--Injecting collections to bean  -->
-<!-- testCollectionBeanObjectInjection -->
-<bean id="injectCollectionFoodsToDog" class="com.home.spring.beans.Dog">
-<property name="foods">
-<list>
-<ref bean="sweetFood"/>
-<ref bean="spicyFood"/>
-</list>
-</property>
-</bean>
-
-<!--Injecting spicyFood and sweetFood by autowire by name  -->
-<!-- testautoWireByName  -->
-<bean id="autoWireByNameBean" class="com.home.spring.beans.Dog" autowire="byName"/>
-
-<!--Injecting person to cat by auto wire by type  -->
-<!-- testautoWireByType -->
-<!--autoWireByConstructorBean  -->
-<bean id="owner" class="com.home.spring.beans.Person">
-<property name="name" value="Forest Gump"></property>
-</bean>
-
-<!--Injecting person to cat by auto wire by type  -->
-<!-- testautoWireByType -->
-<bean id="autoWireByTypeBean" class="com.home.spring.beans.Cat" autowire="byType"/>
-
-<!--Injecting person to cat by auto wire by constructor  -->
-<!--autoWireByConstructorBean  -->
-<bean id="autoWireByConstructorBean" class="com.home.spring.beans.Cat" autowire="constructor"/>
-
-<!--Singleton, one dog instance for multiple getBean calls -->
-<!-- testSingleton -->
-<bean id="singletonDog" class="com.home.spring.beans.Dog" >
-<property name="name" value="Haiku"/>
-<property name="age" value="1"/>
-</bean>
+	<!--Injection of Objects -->
+	<!-- testObjectInjection -->
+	<!-- testCollectionBeanObjectInjection -->
+	<!-- testautoWireByName -->
+	<bean id="sweetFood" class="com.home.spring.beans.Food">
+		<property name="taste" value="sweet" />
+		<property name="quality" value="GradeA" />
+	</bean>
+	<!-- testObjectInjection -->
+	<!-- testCollectionBeanObjectInjection -->
+	<!-- testautoWireByName -->
+	<bean id="spicyFood" class="com.home.spring.beans.Food">
+		<property name="taste" value="spicy" />
+		<property name="quality" value="GradeC" />
+	</bean>
+	<!-- testObjectInjection -->
+	<bean id="injectFoodToDog" class="com.home.spring.beans.Dog">
+		<property name="sweetFood" ref="sweetFood" />
+		<property name="spicyFood" ref="spicyFood" />
+	</bean>
 
 
-<!--Scope is prototype,so new instances for each getbean call  -->
-<!--testProtoType  -->
-<bean id="protoTypeDog" class="com.home.spring.beans.Dog" scope="prototype">
-<property name="name" value="Haiku"/>
-<property name="age" value="1"/>
-</bean>
+	<!--Inner beans -->
+	<!-- testInnerBeanObjectInjection -->
+	<bean id="innerBean" class="com.home.spring.beans.Dog">
+		<property name="sweetFood">
+			<bean class="com.home.spring.beans.Food">
+				<property name="taste" value="InnerBean sweet" />
+				<property name="quality" value="InnerBean GradeA" />
+			</bean>
+		</property>
+		<property name="spicyFood">
+			<bean class="com.home.spring.beans.Food">
+				<property name="taste" value="InnerBean Spicy taste" />
+				<property name="quality" value="InnerBean GradeC" />
+			</bean>
+		</property>
+	</bean>
 
-<!--testBeanDefnitionInheritance  -->
-<bean id="parentDog" class="com.home.spring.beans.Dog">
-<property name="name" value="Haiku"/>
-<property name="age" value="1"/>
-<property name="sweetFood" ref="sweetFood"/>
-<property name="foods">
-<list>
-<ref bean="sweetFood"/>
-</list>
-</property>
-</bean>
+	<!--Injecting collections to bean -->
+	<!-- testCollectionBeanObjectInjection -->
+	<bean id="injectCollectionFoodsToDog" class="com.home.spring.beans.Dog">
+		<property name="foods">
+			<list>
+				<ref bean="sweetFood" />
+				<ref bean="spicyFood" />
+			</list>
+		</property>
+	</bean>
 
-<!-- testBeanDefnitionInheritance -->
-<bean id="inheritanceDog" class="com.home.spring.beans.Dog" parent="parentDog">
-<property name="spicyFood" ref="spicyFood"/>
-</bean>
+	<!--Injecting spicyFood and sweetFood by autowire by name -->
+	<!-- testautoWireByName -->
+	<bean id="autoWireByNameBean" class="com.home.spring.beans.Dog"
+		autowire="byName" />
 
-<!-- testBeanDefnitionInheritanceWithList -->
-<bean id="inheritanceDogWithList" class="com.home.spring.beans.Dog" parent="parentDog">
-<property name="foods">
-<list merge="true">
-<ref bean="spicyFood"/>
-</list>
-</property>
-</bean>
+	<!--Injecting person to cat by auto wire by type -->
+	<!-- testautoWireByType -->
+	<!--autoWireByConstructorBean -->
+	<bean id="owner" class="com.home.spring.beans.Person">
+		<property name="name" value="Forest Gump"></property>
+	</bean>
 
-<!-- testBeanInitializationAndDestruction  -->
-<bean id="initDestroyCat" class="com.home.spring.beans.Cat" autowire="byName"/>
+	<!--Injecting person to cat by auto wire by type -->
+	<!-- testautoWireByType -->
+	<bean id="autoWireByTypeBean" class="com.home.spring.beans.Cat"
+		autowire="byType" />
 
-<!-- testBeanPostProcessor -->
-<bean id="beanPostProcessorCat" class="com.home.spring.beans.Cat" scope="prototype"/>
+	<!--Injecting person to cat by auto wire by constructor -->
+	<!--autoWireByConstructorBean -->
+	<bean id="autoWireByConstructorBean" class="com.home.spring.beans.Cat"
+		autowire="constructor" />
 
-<!-- Definition for bean post processor -->
-<!-- testBeanPostProcessor -->
-<bean class="com.home.spring.beans.MyBeanPostProcessor"/>
-
-<!-- Definition for bean factory post processor -->
-<!-- testBeanFactoryPostProcessor -->
-<bean class="com.home.spring.beans.MyBeanFactoryPostProcessor"/>
-
-<!-- Values for the place holders will be read and replaced from property file(propertyValues.properties) by org.springframework.beans.factory.config.PropertyPlaceholderConfigurer-->
-<!-- testBeanFactoryPostProcessorPropertyPlaceHolder -->
-<bean id="propertyDog" class="com.home.spring.beans.Dog">
-<property name="name" value="${dog.name}"/>
-<property name="age" value="${dog.age}"/>
-</bean>
-
-<!-- Values for the place holders will be read from property file(propertyValues.properties) by org.springframework.beans.factory.config.PropertyPlaceholderConfigurer-->
-<!-- testBeanFactoryPostProcessorPropertyPlaceHolder -->
-<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-<property name="locations">
-<list>
-<value>classpath:propertyValues.properties</value>
-</list>
-</property>
-</bean>
+	<!--Singleton, one dog instance for multiple getBean calls -->
+	<!-- testSingleton -->
+	<bean id="singletonDog" class="com.home.spring.beans.Dog">
+		<property name="name" value="Haiku" />
+		<property name="age" value="1" />
+	</bean>
 
 
-<!-- testAutowireByNameAnnotation -->
-<bean id="center" class="com.home.spring.beans.Point">
-<property name="x" value="0"></property>
-<property name="y" value="0"></property>
-</bean>
+	<!--Scope is prototype,so new instances for each getbean call -->
+	<!--testProtoType -->
+	<bean id="protoTypeDog" class="com.home.spring.beans.Dog" scope="prototype">
+		<property name="name" value="Haiku" />
+		<property name="age" value="1" />
+	</bean>
 
-<!-- testAutowireByAnnotationWithQualifier -->
-<bean id="pointA" class="com.home.spring.beans.Point">
-<qualifier value="circleRelated"/>
-<property name="x" value="1"></property>
-<property name="y" value="-1"></property>
-</bean>
+	<!--testBeanDefnitionInheritance -->
+	<bean id="parentDog" class="com.home.spring.beans.Dog">
+		<property name="name" value="Haiku" />
+		<property name="age" value="1" />
+		<property name="sweetFood" ref="sweetFood" />
+		<property name="foods">
+			<list>
+				<ref bean="sweetFood" />
+			</list>
+		</property>
+	</bean>
 
-<!--Read the messages from the myMessages.properties files  -->
-<!-- testGettingTextFromPropertyFile -->
-<!-- testGettingVariableTextFromPropertyFileWithMessageSource -->
-<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-<property name="basenames">
-<list>
-<value>myMessages</value>
-</list>
-</property>
+	<!-- testBeanDefnitionInheritance -->
+	<bean id="inheritanceDog" class="com.home.spring.beans.Dog"
+		parent="parentDog">
+		<property name="spicyFood" ref="spicyFood" />
+	</bean>
+
+	<!-- testBeanDefnitionInheritanceWithList -->
+	<bean id="inheritanceDogWithList" class="com.home.spring.beans.Dog"
+		parent="parentDog">
+		<property name="foods">
+			<list merge="true">
+				<ref bean="spicyFood" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- testBeanInitializationAndDestruction -->
+	<bean id="initDestroyCat" class="com.home.spring.beans.Cat"
+		autowire="byName" />
+
+	<!-- testBeanPostProcessor -->
+	<bean id="beanPostProcessorCat" class="com.home.spring.beans.Cat"
+		scope="prototype" />
+
+	<!-- Definition for bean post processor -->
+	<!-- testBeanPostProcessor -->
+	<bean class="com.home.spring.beans.MyBeanPostProcessor" />
+
+	<!-- Definition for bean factory post processor -->
+	<!-- testBeanFactoryPostProcessor -->
+	<bean class="com.home.spring.beans.MyBeanFactoryPostProcessor" />
+
+	<!-- Values for the place holders will be read and replaced from property 
+		file(propertyValues.properties) by org.springframework.beans.factory.config.PropertyPlaceholderConfigurer -->
+	<!-- testBeanFactoryPostProcessorPropertyPlaceHolder -->
+	<bean id="propertyDog" class="com.home.spring.beans.Dog">
+		<property name="name" value="${dog.name}" />
+		<property name="age" value="${dog.age}" />
+	</bean>
+
+	<!-- Values for the place holders will be read from property file(propertyValues.properties) 
+		by org.springframework.beans.factory.config.PropertyPlaceholderConfigurer -->
+	<!-- testBeanFactoryPostProcessorPropertyPlaceHolder -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:propertyValues.properties</value>
+			</list>
+		</property>
+	</bean>
 
 
+	<!-- testAutowireByAnnotation -->
+	<bean id="center" class="com.home.spring.beans.Point">
+		<property name="x" value="0"></property>
+		<property name="y" value="0"></property>
+	</bean>
 
-</bean>
+	<!-- testAutowireByAnnotationWithQualifier -->
+	<bean id="pointA" class="com.home.spring.beans.Point">
+		<qualifier value="circleRelated" />
+		<property name="x" value="1"></property>
+		<property name="y" value="-1"></property>
+	</bean>
+
+	<!--Read the messages from the myMessages.properties files -->
+	<!-- testGettingTextFromPropertyFile -->
+	<!-- testGettingVariableTextFromPropertyFileWithMessageSource -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>myMessages</value>
+			</list>
+		</property>
+	</bean>
+
 </beans>
