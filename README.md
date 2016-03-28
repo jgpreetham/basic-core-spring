@@ -29,8 +29,13 @@
 * After running the test case, check the console output to understand the flow  
 * Comment non related bean definitions(refer testCaseName in spring.xml)
 * Uncomment required bean definitions(refer testCaseName in spring.xml)
+* This project needs to be refactored to use best practices which will be done later. As of now this code should be used only for understanding purposes.
 
 
 
 
-* *Note: Run individual test cases instead of running all the test cases together to understand better. Comment non related bean definitions in spring.xml so that you will not get confused when other beans get loaded in spring container. Test case name is mentioned on top of the bean definitions which are required for that particular test case to run properly so make sure to uncomment all the bean definitions required for that test case, so please search the spring.xml from top to bottom before running the test case.*
+* *Note: Run individual test cases instead of running all the test cases together to understand better. Comment non related bean definitions in spring.xml so that you will not get confused when other beans get loaded in spring container. Test case name is mentioned on top of the bean definitions which are required for that particular test case to run properly so make sure to uncomment all the bean definitions required for that test case, so please search the spring.xml from top to bottom before running the test case.*  
+ 
+
+ 
+
