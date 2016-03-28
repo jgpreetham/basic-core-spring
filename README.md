@@ -29,7 +29,8 @@
 * After running the test case, check the console output to understand the flow  
 * Comment non related bean definitions(refer testCaseName in spring.xml)
 * Uncomment required bean definitions(refer testCaseName in spring.xml)
-* This project needs to be refactored to use best practices which will be done later. As of now this code should be used only for understanding purposes.
+
+*Note: This project needs to be refactored to use best practices which will be done later. As of now this code should be used only for understanding purposes.*
 
 
 
